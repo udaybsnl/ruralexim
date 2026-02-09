@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Exim - Exporting Rural Excellence to the World</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #6d4c41 0%, #5d4037 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8d6e63, #a1887f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #a1887f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(93, 64, 55, 0.85), rgba(109, 76, 65, 0.85)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%235d4037" width="1200" height="600"/><path fill="%236d4c41" d="M0 300L100 250L200 350L300 280L400 320L500 270L600 310L700 260L800 340L900 290L1000 330L1100 280L1200 320V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 2rem 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8d6e63, #a1887f);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(141, 110, 99, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(141, 110, 99, 0.6);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #5d4037;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Products Section */
+        .products {
+            background: #f9f9f9;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #8d6e63, #a1887f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .product-card h3 {
+            color: #5d4037;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .product-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #8d6e63, #6d4c41);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Values Section */
+        .values {
+            background: linear-gradient(135deg, #5d4037, #6d4c41);
+            color: white;
+        }
+
+        .values .section-title,
+        .values .section-subtitle {
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #bcaaa4;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f9f9f9;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            color: #5d4037;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8d6e63, #a1887f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5d4037;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8d6e63;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #8d6e63, #a1887f);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(135deg, #6d4c41, #8d6e63);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a3010;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #bcaaa4;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #bcaaa4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f5f5f5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            background: #e0e0e0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(93, 64, 55, 0.9));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #d7ccc8, #bcaaa4);
+        }
+
+        /* Vermicompost Info Section */
+        .vermicompost-info {
+            background: white;
+        }
+
+        .vermi-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .vermi-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #8d6e63, #6d4c41);
+        }
+
+        .vermi-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vermi-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .vermi-placeholder p {
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .vermi-text h3 {
+            color: #5d4037;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vermi-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .vermi-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #8d6e63;
+        }
+
+        .benefit-item strong {
+            color: #5d4037;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .contact-content,
+            .vermi-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vermi-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <!-- Replace 'your-logo.png' with your actual logo file path -->
+                <!-- If no logo file, the icon will show. To use your logo, uncomment the img tag and add your logo path -->
+                <!-- <img src="your-logo.png" alt="Rural Exim Logo" class="logo-img"> -->
+                <div class="logo-icon">🌱</div>
+                <span>Rural Exim</span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#vermicompost">Vermicompost</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Exporting Rural Excellence to the World</h1>
+        <p>Bridging rural India with global markets through authentic organic fertilizers and exquisite handicrafts</p>
+        <a href="#contact" class="cta-button">Partner With Us</a>
+    </section>
+
+    <!-- Vermicompost Info Section -->
+    <section id="vermicompost" class="vermicompost-info">
+        <div class="container">
+            <h2 class="section-title">Discover Vermicompost</h2>
+            <p class="section-subtitle">Nature's Perfect Organic Fertilizer - Our Flagship Product</p>
+            
+            <div class="vermi-content">
+                <div class="vermi-image">
+                    <!-- Replace with actual vermicompost image -->
+                    <!-- <img src="vermicompost-image.jpg" alt="Premium Vermicompost"> -->
+                    <div class="vermi-placeholder">
+                        🪱
+                        <p>Add Your Vermicompost Image Here</p>
+                    </div>
+                </div>
+                
+                <div class="vermi-text">
+                    <h3>What is Vermicompost?</h3>
+                    <p>Vermicompost is a nutrient-rich organic fertilizer produced through the natural decomposition of organic matter by earthworms. This "black gold" of agriculture is created when earthworms consume organic waste and transform it into a premium soil amendment packed with essential nutrients, beneficial microorganisms, and plant growth hormones.</p>
+                    
+                    <p>Unlike chemical fertilizers that can harm soil health over time, vermicompost enriches the soil structure, improves water retention, enhances microbial activity, and provides slow-release nutrients that feed plants naturally throughout their growth cycle.</p>
+                    
+                    <div class="vermi-benefits">
+                        <div class="benefit-item">
+                            <strong>🌱 Nutrient Rich</strong>
+                            High in NPK, calcium, magnesium, and micronutrients essential for plant growth
+                        </div>
+                        <div class="benefit-item">
+                            <strong>💧 Water Retention</strong>
+                            Improves soil structure and moisture-holding capacity by up to 3x
+                        </div>
+                        <div class="benefit-item">
+                            <strong>🦠 Microbial Life</strong>
+                            Contains billions of beneficial bacteria and enzymes that boost soil health
+                        </div>
+                        <div class="benefit-item">
+                            <strong>♻️ Eco-Friendly</strong>
+                            100% organic, zero chemicals, reduces waste and carbon footprint
+                        </div>
+                        <div class="benefit-item">
+                            <strong>🌾 Higher Yields</strong>
+                            Increases crop productivity by 20-30% compared to chemical fertilizers
+                        </div>
+                        <div class="benefit-item">
+                            <strong>🛡️ Disease Resistance</strong>
+                            Natural plant hormones boost immunity and pest resistance
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Premium quality, sustainably sourced products from rural India</p>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">🪱</div>
+                    <h3>Vermicompost</h3>
+                    <p>Premium organic fertilizer produced through natural composting processes. Rich in nutrients, improves soil health, and reduces carbon footprint. Our flagship product launching your journey to sustainable agriculture.</p>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🌾</div>
+                    <h3>Organic Fertilizers</h3>
+                    <p>Farm-based, chemical-free fertilizers that enrich soils naturally. Derived from sustainable sources, our organic fertilizers empower farmers worldwide to grow healthier crops while protecting the environment.</p>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">🎨</div>
+                    <h3>Handicrafts</h3>
+                    <p>Exquisite handcrafted products from rural artisans. Each piece embodies cultural heritage, using locally sourced renewable materials. Zero-waste production supporting vibrant village communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Rural Exim</h2>
+            <p class="section-subtitle">Young visionaries bringing rural treasures to the world</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>At Rural Exim, we bridge the vibrant heart of rural India with the global marketplace, proudly exporting authentic rural treasures like organic fertilizers and exquisite handicrafts.</p>
+                    
+                    <p>Our journey begins with a profound commitment to ruralism, celebrating the ingenuity of village artisans and farmers who sustain our planet through time-honored practices.</p>
+                    
+                    <p>Founded by a dynamic team of young visionaries, we infuse fresh energy into age-old traditions, ensuring every product carries the essence of rural resilience. We started small, but our unwavering desire to serve the world drives us forward with unmatched reliability.</p>
+                    
+                    <p>Rural Exim stands as a beacon for ethical export practices, prioritizing transparency and fairness in every transaction.</p>
+                </div>
+                
+                <div class="about-image">
+                    <h3>Our Impact</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Organic Products</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Circular Economy</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">🌍</span>
+                            <span class="stat-label">Global Reach</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">🤝</span>
+                            <span class="stat-label">Fair Trade</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">Building a sustainable future through ethical practices</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>♻️ Circular Economy</h3>
+                    <p>Creating closed-loop systems that minimize waste and maximize value. Every product contributes to sustainable cycles that benefit both people and planet.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>🌱 Environmental Impact</h3>
+                    <p>Reducing global carbon footprints through organic fertilizers and sustainable practices. Every shipment plants seeds of environmental change.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>🤝 Community Empowerment</h3>
+                    <p>Providing stable market access, fair wages, and skill-building opportunities that uplift entire villages and preserve rural livelihoods.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>💎 Ethical Export</h3>
+                    <p>Transparency and fairness in every transaction. We reject exploitative supply chains for partnerships built on mutual respect and prosperity.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>🎯 Youth-Driven Innovation</h3>
+                    <p>A new generation of passionate leaders blending rural roots with global savvy to deliver reliable opportunities worldwide.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>🏛️ Cultural Preservation</h3>
+                    <p>Preserving cultural heritage through handicrafts while supporting zero-waste production with locally sourced renewable materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Gallery</h2>
+            <p class="section-subtitle">Glimpses of our products, processes, and rural partnerships</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-1.jpg" alt="Vermicompost Production"> -->
+                    <div class="placeholder-img">🪱</div>
+                    <div class="gallery-overlay">
+                        <h4>Vermicompost Production</h4>
+                        <p>Premium organic fertilizer in production</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-2.jpg" alt="Earthworms at Work"> -->
+                    <div class="placeholder-img">🌱</div>
+                    <div class="gallery-overlay">
+                        <h4>Nature's Workers</h4>
+                        <p>Earthworms creating nutrient-rich compost</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-3.jpg" alt="Rural Artisans"> -->
+                    <div class="placeholder-img">🎨</div>
+                    <div class="gallery-overlay">
+                        <h4>Rural Artisans</h4>
+                        <p>Skilled craftspeople creating handicrafts</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-4.jpg" alt="Finished Products"> -->
+                    <div class="placeholder-img">📦</div>
+                    <div class="gallery-overlay">
+                        <h4>Ready for Export</h4>
+                        <p>Premium products packaged for global markets</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-5.jpg" alt="Organic Farming"> -->
+                    <div class="placeholder-img">🌾</div>
+                    <div class="gallery-overlay">
+                        <h4>Sustainable Farming</h4>
+                        <p>Partnering with organic farmers across India</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Replace placeholder with actual image: <img src="gallery-6.jpg" alt="Village Community"> -->
+                    <div class="placeholder-img">🏘️</div>
+                    <div class="gallery-overlay">
+                        <h4>Community Impact</h4>
+                        <p>Empowering rural communities through fair trade</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; color: #666; font-style: italic;">
+                To add your images: Replace the placeholder-img divs with actual img tags pointing to your image files
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Join us in building a greener, more equitable future</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location</strong><br>
+                            India
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01686f676e41737473606d6479686c2f626e6c">[email&#160;protected]</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +91 XXX XXX XXXX
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 2rem; line-height: 1.8; color: #666;">
+                        We invite international partners, retailers, and conscious consumers to collaborate with Rural Exim. Together, we can amplify rural voices, drive circular progress, and build a sustainable future—one ethical export at a time.
+                    </p>
+                </div>
+                
+                <form>
+                    <h3 style="color: #5d4037; margin-bottom: 1.5rem;">Send Us a Message</h3>
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rural Exim</h4>
+                    <p style="line-height: 1.8; color: rgba(255,255,255,0.8);">
+                        Bridging rural India with the global marketplace through authentic, sustainable products that transform lives and ecosystems.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#values">Our Values</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#products">Vermicompost</a></li>
+                        <li><a href="#products">Organic Fertilizers</a></li>
+                        <li><a href="#products">Handicrafts</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Rural Exim. All rights reserved. | Ethical exports from rural India to the world.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector
